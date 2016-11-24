@@ -9,6 +9,49 @@
     <version>0.7-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>Scalable, Portable and Distributed Gradient Boosting (GBDT, GBRT or GBM) Library, for Python, R, Java, Scala, C++ and more. Runs on single machine, Hadoop, Spark, Flink and DataFlow</description>    
+    <url>https://github.com/dmlc/xgboost</url>
+
+    <licenses>
+        <license>
+            <name>Apache</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Tianqi Chen</name>
+            <url>https://github.com/tqchen</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com:dmlc/xgboost.git</connection>
+        <developerConnection>scm:git:git@github.com:dmlc/xgboost.git</developerConnection>
+        <url>git@github.com:dmlc/xgboost.git</url>
+    </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>central_maven</id>
+            <name>central maven</name>
+            <url>https://repo1.maven.org/maven2</url>
+        </repository>
+    </repositories>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -21,13 +64,6 @@
         <scala.binary.version>2.11</scala.binary.version>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>central_maven</id>
-            <name>central maven</name>
-            <url>https://repo1.maven.org/maven2</url>
-        </repository>
-    </repositories>
 
     <modules>
         <module>xgboost4j</module>
@@ -85,6 +121,33 @@
             <modules>
                 <module>xgboost4j-native-windows</module>
             </modules>
+        </profile>
+        <profile>
+            <id>release-sign</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 
