@@ -3,14 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
-        <groupId>ml.dmlc</groupId>
+        <groupId>ml.dmlc.xgboost</groupId>
         <artifactId>xgboost-jvm</artifactId>
-        <version>0.7</version>
+        <version>0.7-SNAPSHOT</version>
     </parent>
+
     <artifactId>xgboost4j-example</artifactId>
-    <version>0.7</version>
     <packaging>jar</packaging>
+
     <build>
         <plugins>
             <plugin>
@@ -24,9 +26,9 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>ml.dmlc</groupId>
+            <groupId>ml.dmlc.xgboost</groupId>
             <artifactId>xgboost4j-spark</artifactId>
-            <version>0.7</version>
+            <version>0.7-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -35,9 +37,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>ml.dmlc</groupId>
+            <groupId>ml.dmlc.xgboost</groupId>
             <artifactId>xgboost4j-flink</artifactId>
-            <version>0.7</version>
+            <version>0.7-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>

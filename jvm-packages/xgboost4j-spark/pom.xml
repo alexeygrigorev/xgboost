@@ -4,11 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>ml.dmlc</groupId>
+        <groupId>ml.dmlc.xgboost</groupId>
         <artifactId>xgboost-jvm</artifactId>
-        <version>0.7</version>
+        <version>0.7-SNAPSHOT</version>
     </parent>
+
     <artifactId>xgboost4j-spark</artifactId>
+
     <build>
         <plugins>
             <plugin>
@@ -22,9 +24,9 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>ml.dmlc</groupId>
+            <groupId>ml.dmlc.xgboost</groupId>
             <artifactId>xgboost4j</artifactId>
-            <version>0.7</version>
+            <version>0.7-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>

@@ -4,10 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ml.dmlc</groupId>
+    <groupId>ml.dmlc.xgboost</groupId>
     <artifactId>xgboost-jvm</artifactId>
-    <version>0.7</version>
+    <version>0.7-SNAPSHOT</version>
     <packaging>pom</packaging>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -15,6 +16,7 @@
         <maven.compiler.target>1.7</maven.compiler.target>
         <maven.version>3.3.9</maven.version>
     </properties>
+
     <repositories>
         <repository>
             <id>central_maven</id>
@@ -22,12 +24,17 @@
             <url>https://repo1.maven.org/maven2</url>
         </repository>
     </repositories>
+
     <modules>
         <module>xgboost4j</module>
-        <module>xgboost4j-example</module>
+        <module>xgboost4j-native-linux</module>
+        <module>xgboost4j-native-osx</module>
+        <module>xgboost4j-native-windows</module>
         <module>xgboost4j-spark</module>
         <module>xgboost4j-flink</module>
+        <module>xgboost4j-example</module>
     </modules>
+
     <profiles>
         <profile>
             <id>spark-2.x</id>
@@ -42,6 +49,7 @@
             </properties>
         </profile>
     </profiles>
+
     <build>
         <plugins>
             <plugin>
@@ -169,7 +177,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -213,6 +220,7 @@
             </plugin>
         </plugins>
     </build>
+
     <dependencies>
         <dependency>
             <groupId>com.esotericsoftware.kryo</groupId>

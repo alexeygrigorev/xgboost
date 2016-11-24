@@ -5,7 +5,7 @@ if not exist %libsource% (
 goto end
 )
 
-set libfolder=src\main\resources\lib
+set libfolder=..\xgboost4j-native-windows\src\main\resources\lib
 set libpath=%libfolder%\xgboost4j.dll
 if not exist %libfolder% (mkdir %libfolder%)
 if exist %libpath% (del %libpath%)
@@ -14,6 +14,6 @@ echo complete
 exit
 
 :end
-  echo "source library not found, please build it first by runing mingw32-make jvm"
+  echo "source library not found, please build it first by running 'mingw32-make jvm'"
   pause
   exit

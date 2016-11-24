@@ -7,12 +7,14 @@ pushd `dirname $0` > /dev/null
 #settings according to os
 dl="so"
 dis_omp=0
+platform="linux"
 
 if [ $(uname) == "Darwin" ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
   dl="dylib"
   #change this to 0 if your compiler support openmp
   dis_omp=1
+  platform="osx"
 fi
 
 cd ..
@@ -20,13 +22,13 @@ make jvm no_omp=${dis_omp}
 cd jvm-packages
 echo "move native lib"
 
-libPath="xgboost4j/src/main/resources/lib"
+libPath="xgboost4j-native-"${platform}"/src/main/resources/lib"
 if [ ! -d "$libPath" ]; then
   mkdir -p "$libPath"
 fi
 
-rm -f xgboost4j/src/main/resources/lib/libxgboost4j.${dl}
-mv lib/libxgboost4j.so xgboost4j/src/main/resources/lib/libxgboost4j.${dl}
+rm -f ${libPath}/libxgboost4j.${dl}
+mv lib/libxgboost4j.so ${libPath}/libxgboost4j.${dl}
 # copy python to native resources
 cp ../dmlc-core/tracker/dmlc_tracker/tracker.py xgboost4j/src/main/resources/tracker.py
 # copy test data files

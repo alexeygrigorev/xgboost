@@ -10,7 +10,7 @@
         <version>0.7-SNAPSHOT</version>
     </parent>
 
-    <artifactId>xgboost4j</artifactId>
+    <artifactId>xgboost4j-native-osx</artifactId>
     <packaging>jar</packaging>
 
     <profiles>
@@ -26,57 +26,10 @@
                 <binary.dependency.modifier>linux</binary.dependency.modifier>
             </properties>
         </profile>
-        <profile>
-            <id>OSX</id>
-            <activation>
-                <os>
-                    <family>osx</family>
-                </os>
-            </activation>
-            <properties>
-                <binary.build.script>create_jni.sh</binary.build.script>
-                <binary.dependency.modifier>osx</binary.dependency.modifier>
-            </properties>
-        </profile>
-        <profile>
-            <id>Windows</id>
-            <activation>
-                <os>
-                    <family>windows</family>
-                </os>
-            </activation>
-            <properties>
-                <binary.build.script>create_jni.bat</binary.build.script>
-                <binary.dependency.modifier>windows</binary.dependency.modifier>
-            </properties>
-        </profile>
     </profiles>
-
-    <dependencies>
-        <dependency>
-            <groupId>ml.dmlc.xgboost</groupId>
-            <artifactId>xgboost4j-native-${binary.dependency.modifier}</artifactId>
-            <version>0.7-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.3</version>
-                <configuration>
-                    <show>protected</show>
-                    <nohelp>true</nohelp>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
