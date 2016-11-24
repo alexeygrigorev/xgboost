@@ -13,21 +13,6 @@
     <artifactId>xgboost4j-native-linux</artifactId>
     <packaging>jar</packaging>
 
-    <profiles>
-        <profile>
-            <id>Linux</id>
-            <activation>
-                <os>
-                    <family>linux</family>
-                </os>
-            </activation>
-            <properties>
-                <binary.build.script>create_jni.sh</binary.build.script>
-                <binary.dependency.modifier>linux</binary.dependency.modifier>
-            </properties>
-        </profile>
-    </profiles>
-
     <build>
         <plugins>
             <plugin>
@@ -49,7 +34,7 @@
                             <goal>exec</goal>
                         </goals>
                         <configuration>
-                            <executable>${binary.build.script}</executable>
+                            <executable>create_jni.sh</executable>
                         </configuration>
                     </execution>
                 </executions>

@@ -33,7 +33,6 @@
                 </os>
             </activation>
             <properties>
-                <binary.build.script>create_jni.sh</binary.build.script>
                 <binary.dependency.modifier>osx</binary.dependency.modifier>
             </properties>
         </profile>
@@ -45,7 +44,6 @@
                 </os>
             </activation>
             <properties>
-                <binary.build.script>create_jni.bat</binary.build.script>
                 <binary.dependency.modifier>windows</binary.dependency.modifier>
             </properties>
         </profile>
@@ -82,23 +80,6 @@
                 <configuration>
                     <skipAssembly>false</skipAssembly>
                 </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>exec-maven-plugin</artifactId>
-                <groupId>org.codehaus.mojo</groupId>
-                <executions>
-                    <execution>
-                        <!-- Run our version calculation script -->
-                        <id>native</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>${binary.build.script}</executable>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
