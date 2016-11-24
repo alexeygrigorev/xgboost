@@ -15,6 +15,10 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
         <maven.version>3.3.9</maven.version>
+        <spark.version>2.0.1</spark.version>
+        <flink.suffix>_2.11</flink.suffix>
+        <scala.version>2.11.8</scala.version>
+        <scala.binary.version>2.11</scala.binary.version>
     </properties>
 
     <repositories>
@@ -27,9 +31,6 @@
 
     <modules>
         <module>xgboost4j</module>
-        <module>xgboost4j-native-linux</module>
-        <module>xgboost4j-native-osx</module>
-        <module>xgboost4j-native-windows</module>
         <module>xgboost4j-spark</module>
         <module>xgboost4j-flink</module>
         <module>xgboost4j-example</module>
@@ -39,7 +40,11 @@
         <profile>
             <id>spark-2.x</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <file>
+                    <!-- Hack to make it always active unless explicitly turned off with -P\!spark-2.x. 
+                         When there are mutltiple profiles, activeByDefault no longer works -->
+                    <exists>pom.xml</exists>
+                </file>
             </activation>
             <properties>
                 <spark.version>2.0.1</spark.version>
@@ -47,6 +52,39 @@
                 <scala.version>2.11.8</scala.version>
                 <scala.binary.version>2.11</scala.binary.version>
             </properties>
+        </profile>
+        <profile>
+            <id>linux</id>
+            <activation>
+                <os>
+                    <family>linux</family>
+                </os>
+            </activation>
+            <modules>
+                <module>xgboost4j-native-linux</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>osx</id>
+            <activation>
+                <os>
+                    <family>osx</family>
+                </os>
+            </activation>
+            <modules>
+                <module>xgboost4j-native-osx</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>windows</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <modules>
+                <module>xgboost4j-native-windows</module>
+            </modules>
         </profile>
     </profiles>
 

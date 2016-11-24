@@ -15,19 +15,18 @@
 
     <profiles>
         <profile>
-            <id>Linux</id>
+            <id>linux</id>
             <activation>
                 <os>
                     <family>linux</family>
                 </os>
             </activation>
             <properties>
-                <binary.build.script>create_jni.sh</binary.build.script>
                 <binary.dependency.modifier>linux</binary.dependency.modifier>
             </properties>
         </profile>
         <profile>
-            <id>OSX</id>
+            <id>osx</id>
             <activation>
                 <os>
                     <family>osx</family>
@@ -39,7 +38,7 @@
             </properties>
         </profile>
         <profile>
-            <id>Windows</id>
+            <id>windows</id>
             <activation>
                 <os>
                     <family>windows</family>
